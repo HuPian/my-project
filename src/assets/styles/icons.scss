@@ -1,0 +1,50 @@
+@font-face {
+	font-family: "my-font";
+	src: url('../assets/fonts/my-font.eot');
+	src: url('../assets/fonts/my-font.eot?#iefix') format('eot'),
+		url('../assets/fonts/my-font.woff2') format('woff2'),
+		url('../assets/fonts/my-font.woff') format('woff'),
+		url('../assets/fonts/my-font.ttf') format('truetype'),
+		url('../assets/fonts/my-font.svg#my-font') format('svg');
+}
+
+@mixin c-icon-styles {
+	font-family: "my-font";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%c-icon {
+	@include c-icon-styles;
+}
+
+@function c-icon-char($filename) {
+	$char: "";
+
+	@if $filename == add {
+		$char: "\E001";
+	}
+
+	@return $char;
+}
+
+@mixin c-icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %c-icon;
+		} @else {
+			@include c-icon-styles;
+		}
+		content: c-icon-char($filename);
+	}
+}
+
+.c-icon-add {
+	@include c-icon(add);
+}

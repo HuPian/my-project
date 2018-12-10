@@ -5,6 +5,8 @@
 5. add root div
 6. npm init
 7. gulp init
+    a. install gulp and babel
+    b. create gulpfile.babel.js
 8. gulp build
 9. gulp server (hot reload)
 10. npm script
