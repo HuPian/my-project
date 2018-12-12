@@ -43,8 +43,8 @@ gulp.task('icon-font',function (cb) {
 gulp.task('compile', function (cb) {
   const compiler = webpack(webpackConfig);
   compiler.run((err,stats)=>{
-    console.log(err);
-    console.log(stats.toJson("minimal"));
+    if(err) console.log(err);
+    if(stats.hasErrors()) console.log(stats.toJson("minimal"));
     cb();
   });
 });
