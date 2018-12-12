@@ -2,13 +2,14 @@ import gulp from 'gulp';
 import clean from 'gulp-clean';
 import gulpIconfont from 'gulp-iconfont';
 import gulpIconfontCss from 'gulp-iconfont-css';
+import gulpSequence from 'gulp-sequence';
 import webpackConfig from './compile.config';
 import webpack from 'webpack';
 
 
 
 gulp.task('default', ['build']);
-gulp.task('build',["clean","icon-font","static-compile"]);
+gulp.task('build',gulpSequence("clean","icon-font","compile"));
 // gulp.task('server',[]);
 // gulp.task('release',[]);
 
@@ -36,14 +37,14 @@ gulp.task('icon-font',function (cb) {
         timestamp: 1
       }))
       .pipe(gulp.dest('./src/assets/fonts'));
-      cb();
+  cb();
 });
 
-gulp.task('static-compile', function (cb) {
+gulp.task('compile', function (cb) {
   const compiler = webpack(webpackConfig);
   compiler.run((err,stats)=>{
     console.log(err);
     console.log(stats.toJson("minimal"));
+    cb();
   });
-  cb();
 });
