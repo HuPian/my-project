@@ -62,7 +62,12 @@ const webpackConfig = {
     // 插件，压缩js
     new UglifyJsWebpackPlugin(),
 
-    new AssetsWebpackPlugin({filename: 'assets.json',path:path.resolve(__dirname,'build')})
+    new AssetsWebpackPlugin({
+      filename: 'assets.json',
+      path: path.resolve(__dirname,'build'),
+      includeAllFileTypes: false,
+      fileTypes:['js','css']
+      })
   ],
   resolve:{
     alias:{
