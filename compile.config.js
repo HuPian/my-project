@@ -24,11 +24,11 @@ const webpackConfig = {
       },
       {
         test: /\.css/,
-        use: ["style-loader","css-loader"]
+        use: ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader"]})
       },
       {
         test: /\.scss/,
-        use: ["style-loader","css-loader","sass-loader"] //从右往左应用
+        use: ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader"]}) //从右往左应用
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)/,
@@ -55,7 +55,7 @@ const webpackConfig = {
   plugins:[
     // 插件：导出 css
     new ExtractTextPlugin({
-      filename:'[name]-[contenthash:10].min.css'
+      filename:'[name]-[chunkhash:10].min.css'
     }),
     // 插件，压缩js
     new UglifyJsWebpackPlugin()
