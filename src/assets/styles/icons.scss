@@ -30,6 +30,9 @@
 	@if $filename == add {
 		$char: "\E001";
 	}
+	@if $filename == close {
+		$char: "\E002";
+	}
 
 	@return $char;
 }
@@ -47,4 +50,7 @@
 
 .c-icon-add {
 	@include c-icon(add);
+}
+.c-icon-close {
+	@include c-icon(close);
 }
