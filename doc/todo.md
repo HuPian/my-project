@@ -20,7 +20,10 @@
         导出独立的css文件
         第三方依赖单独打包
         记录资源信息
-    view compile
+    view compile 模版加载静态资源
+    optimize：
+        css 兼容性
+        css 去重
 9. gulp server (hot reload)
 10. npm script
 

@@ -28,11 +28,11 @@ const webpackConfig = {
       },
       {
         test: /\.css/,
-        use: ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader"]})
+        use: ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader", "postcss-loader"]})
       },
       {
         test: /\.scss/,
-        use: ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader"]}) //从右往左应用
+        use: ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader", "postcss-loader"]}) //从右往左应用
       },
       {
         test: /\.(eot|ttf|woff|woff2|svg)/,
