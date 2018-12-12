@@ -1,13 +1,22 @@
 ### main task
 1. create project/ git init
-2. create dir
-3. create index.html
-5. add root div
+    a. git init
+    b. create dir
+    c. create index.html
+        cdn load react
+        cdn load css normalize file
+        create root div
+    d. create index.js and routes/index.js
+        import common style file
+        render DOM
+        create empty routes
 6. npm init
 7. gulp init
     a. install gulp and babel
     b. create gulpfile.babel.js
 8. gulp build
+    webpack compile
+        tips: chunkFilename 是导出按需加载的资源， 使用optimization.splitChunks 属性代替
 9. gulp server (hot reload)
 10. npm script
 

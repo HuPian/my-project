@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="my-font" horiz-adv-x="1200">
+    <font-face font-family="my-font"
+      units-per-em="1200" ascent="1200"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="add"
+      unicode="&#xE001;"
+      horiz-adv-x="1200" d="M0 600A600.0000000000001 600.0000000000001 0 0 1 1200 600A600.0000000000001 600.0000000000001 0 0 1 0 600M250.0000000000001 650H950.0000000000002V550H250.0000000000001V650zM650 950L649.9999999999999 249.9999999999999L549.9999999999999 249.9999999999999L550 950L650 950z" />
+  </font>
+</defs>
+</svg>

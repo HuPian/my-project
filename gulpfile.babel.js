@@ -2,6 +2,9 @@ import gulp from 'gulp';
 import clean from 'gulp-clean';
 import gulpIconfont from 'gulp-iconfont';
 import gulpIconfontCss from 'gulp-iconfont-css';
+import webpackConfig from './compile.config';
+import webpack from 'webpack';
+
 
 
 // gulp.task('default', ['build']);
@@ -27,9 +30,19 @@ gulp.task('icon-font',function (cb) {
       }))
       .pipe(gulpIconfont({
         fontName,
-        format:['ttf', 'eot', 'woff','woff2','svg'],
+        formats:['ttf', 'eot', 'woff','woff2','svg'],
         fontHeight:1200,
         normalize: true
       }))
       .pipe(gulp.dest('./src/assets/fonts'));
+      cb();
+});
+
+gulp.task('static-compile', function (cb) {
+  const compiler = webpack(webpackConfig);
+  compiler.run((err,stats)=>{
+    console.log(err);
+    console.log(stats.toJson("minimal"));
+  });
+  cb();
 });
