@@ -32,7 +32,8 @@ gulp.task('icon-font',function (cb) {
         fontName,
         formats:['ttf', 'eot', 'woff','woff2','svg'],
         fontHeight:1200,
-        normalize: true
+        normalize: true,
+        timestamp: 1
       }))
       .pipe(gulp.dest('./src/assets/fonts'));
       cb();
