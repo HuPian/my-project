@@ -2,6 +2,7 @@ import path from 'path'; // node 内部模块
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import UglifyJsWebpackPlugin from 'uglifyjs-webpack-plugin';
 import  AssetsWebpackPlugin from "assets-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const webpackConfig = {
   entry:'./src/index.js',
@@ -39,6 +40,10 @@ const webpackConfig = {
       {
         test: /\.(png|jpg|svg)/,
         use: 'url-loader'
+      },
+      {
+        test:/\.html/,
+        use:'html-loader'
       }
     ]
   },
@@ -67,7 +72,10 @@ const webpackConfig = {
       path: path.resolve(__dirname,'build'),
       includeAllFileTypes: false,
       fileTypes:['js','css']
-      })
+      }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
   ],
   resolve:{
     alias:{

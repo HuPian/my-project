@@ -7,8 +7,8 @@ import webpack from 'webpack';
 
 
 
-// gulp.task('default', ['build']);
-// gulp.task('build',["clean","icon-font","static-compile", "view-compile"]);
+gulp.task('default', ['build']);
+gulp.task('build',["clean","icon-font","static-compile"]);
 // gulp.task('server',[]);
 // gulp.task('release',[]);
 
