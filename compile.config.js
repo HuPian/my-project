@@ -1,6 +1,8 @@
 import path from 'path'; // node 内部模块
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import UglifyJsWebpackPlugin from 'uglifyjs-webpack-plugin';
+import  AssetsWebpackPlugin from "assets-webpack-plugin";
+
 const webpackConfig = {
   entry:'./src/index.js',
   output:{
@@ -58,7 +60,9 @@ const webpackConfig = {
       filename:'[name]-[chunkhash:10].min.css'
     }),
     // 插件，压缩js
-    new UglifyJsWebpackPlugin()
+    new UglifyJsWebpackPlugin(),
+
+    new AssetsWebpackPlugin({filename: 'assets.json',path:path.resolve(__dirname,'build')})
   ],
   resolve:{
     alias:{
