@@ -13,6 +13,7 @@ const webpackConfig = {
     publicPath:'',
   },
   mode: "development",
+  devtool:'source-map',
   module:{
     rules:[
       {
@@ -65,7 +66,7 @@ const webpackConfig = {
       filename:'[name]-[chunkhash:10].min.css'
     }),
     // 插件，压缩js
-    new UglifyJsWebpackPlugin(),
+    new UglifyJsWebpackPlugin({sourceMap:true}),
 
     new AssetsWebpackPlugin({
       filename: 'assets.json',
