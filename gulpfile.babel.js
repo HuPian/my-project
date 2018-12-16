@@ -12,7 +12,7 @@ import open from 'open';
 
 gulp.task('default', ['build']);
 gulp.task('build',gulpSequence("clean","icon-font","compile"));
-// gulp.task('server',[]);
+gulp.task('server',gulpSequence("clean","icon-font","server.dev"));
 
 gulp.task('clean', function (cb) {
   gulp.src('build')
