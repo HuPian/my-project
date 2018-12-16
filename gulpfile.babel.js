@@ -5,13 +5,14 @@ import gulpIconfontCss from 'gulp-iconfont-css';
 import gulpSequence from 'gulp-sequence';
 import webpackConfig from './compile.config';
 import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import open from 'open';
 
 
 
 gulp.task('default', ['build']);
 gulp.task('build',gulpSequence("clean","icon-font","compile"));
 // gulp.task('server',[]);
-// gulp.task('release',[]);
 
 gulp.task('clean', function (cb) {
   gulp.src('build')
@@ -19,7 +20,7 @@ gulp.task('clean', function (cb) {
   cb();
 });
 
-gulp.task('icon-font',function (cb) {
+gulp.task('icon-font',function (cb)  {
   const fontName = "my-font";
   gulp.src('./src/assets/svg-icons/*.svg')
       .pipe(gulpIconfontCss({
@@ -46,5 +47,27 @@ gulp.task('compile', function (cb) {
     if(err) console.log(err);
     if(stats.hasErrors()) console.log(stats.toJson("minimal"));
     cb();
+  });
+});
+
+gulp.task('server.dev', function () {
+
+  const options = {
+    hot:true,
+    port:8989,
+    host: "0.0.0.0",
+    compress:true,
+    // publicPath:'',
+    open: true,
+    watchContentBase: true,
+    // inline:true,
+  };
+  WebpackDevServer.addDevServerEntrypoints(webpackConfig, options);
+  const compiler = webpack(webpackConfig);
+  const devServer = new WebpackDevServer(compiler, options);
+  devServer.listen(8989,'0.0.0.0',(error)=>{
+    if(error) console.log(error);
+    console.log(`Listen at http://0.0.0.0:8989`);
+    open('http://0.0.0.0:8989');
   });
 });

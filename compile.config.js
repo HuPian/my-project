@@ -3,12 +3,13 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import UglifyJsWebpackPlugin from 'uglifyjs-webpack-plugin';
 import  AssetsWebpackPlugin from "assets-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack from 'webpack';
 
 const webpackConfig = {
   entry:'./src/index.js',
   output:{
-    filename:'[name].[chunkhash:10].bundle.js',
-    chunkFilename:'[name].[id][chunkhash:10].js',
+    filename:'[name].[hash:10].bundle.js',
+    chunkFilename:'[name].[id][hash:10].js',
     path: path.resolve(__dirname,'build'),
     publicPath:'',
   },
@@ -76,7 +77,8 @@ const webpackConfig = {
       }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve:{
     alias:{
