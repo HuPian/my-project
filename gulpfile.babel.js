@@ -3,7 +3,7 @@ import clean from 'gulp-clean';
 import gulpIconfont from 'gulp-iconfont';
 import gulpIconfontCss from 'gulp-iconfont-css';
 import gulpSequence from 'gulp-sequence';
-import webpackConfig from './compile.config';
+import getWebpackConfig from './compile.config';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import open from 'open';
@@ -42,6 +42,7 @@ gulp.task('icon-font',function (cb)  {
 });
 
 gulp.task('compile', function (cb) {
+  const webpackConfig = getWebpackConfig({filenameSignature:true});
   const compiler = webpack(webpackConfig);
   compiler.run((err,stats)=>{
     if(err) console.log(err);
@@ -51,7 +52,7 @@ gulp.task('compile', function (cb) {
 });
 
 gulp.task('server.dev', function () {
-
+  const webpackConfig = getWebpackConfig({hot:true});
   const options = {
     hot:true,
     port:8989,
