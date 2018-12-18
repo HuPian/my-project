@@ -41,3 +41,13 @@ WARNING in asset size limit: The following asset(s) exceed the recommended size 
 This can impact web performance.
 Assets:
   vendor.js (293 KiB)
+
+
+起开发服务的方案：
+1。 webpackDevServer
+    缺点：node js API 下，open 参数不起作用； css extract 不支持HMR，只能用 style-loader
+    优点：简单，支持js HMR
+2.  webpackDevServer + gulp-webserver
+    缺点： 不支持 HMR， 服务要转发 （暂时没成功）
+    优点：监听文件夹，文件夹下发生变化时，自动冲刷页面
+3.  express 起服务 + dev middleware 和 hot middleware （暂时没有尝试）
