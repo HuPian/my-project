@@ -67,11 +67,11 @@ export default function getWebpackConfig ({hot=false,filenameSignature=false}) {
         },
         {
           test: /\.css/,
-          use: ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader", "postcss-loader"]})
+          use: hot?["style-loader","css-loader", "postcss-loader"]:ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader", "postcss-loader"]})
         },
         {
           test: /\.scss/,
-          use: ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader", "postcss-loader"]}) //从右往左应用
+          use: hot?["style-loader","css-loader","sass-loader", "postcss-loader"]:ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader", "postcss-loader"]}) //从右往左应用
         },
         {
           test: /\.(eot|ttf|woff|woff2|svg)/,

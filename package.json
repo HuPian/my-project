@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"gulp",
-    "server":"gulp server"
+    "build": "gulp",
+    "server": "gulp server"
   },
   "keywords": [
     "example",

@@ -3,6 +3,7 @@ import clean from 'gulp-clean';
 import gulpIconfont from 'gulp-iconfont';
 import gulpIconfontCss from 'gulp-iconfont-css';
 import gulpSequence from 'gulp-sequence';
+import gulpWebServer from 'gulp-webserver';
 import getWebpackConfig from './compile.config';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
@@ -51,7 +52,7 @@ gulp.task('compile', function (cb) {
   });
 });
 
-gulp.task('server.dev', function () {
+gulp.task('server.dev', function (cb) {
   const webpackConfig = getWebpackConfig({hot:true});
   const options = {
     hot:true,
@@ -65,6 +66,15 @@ gulp.task('server.dev', function () {
   };
   WebpackDevServer.addDevServerEntrypoints(webpackConfig, options);
   const compiler = webpack(webpackConfig);
+  // webpack compiler hook "done"
+  let finished = false;
+  compiler.plugin('done',function () {
+     if(!finished){
+       finished=true;
+      cb();
+     }
+  });
+
   const devServer = new WebpackDevServer(compiler, options);
   devServer.listen(8989,'0.0.0.0',(error)=>{
     if(error) console.log(error);

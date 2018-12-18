@@ -25,6 +25,10 @@
         css 兼容性
         css 去重
 9. gulp server (hot reload)
+    ExtractTextPlugin 不支持css HMR, webpack4下不支持contenthash值
+    try: css-hot-loader & mini-css-extract-plugin: cannot read property call of undefined
+    try: gulp webserver : 另起一个单独的view 服务，监听文件夹, doesn't work. webpackDevSever 构建的内容在内存中
+    solution: 起server时，不单独导出css文件，直接使用style-loader
 10. npm script
 
 ### extra task
