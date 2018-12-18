@@ -3,7 +3,6 @@ import clean from 'gulp-clean';
 import gulpIconfont from 'gulp-iconfont';
 import gulpIconfontCss from 'gulp-iconfont-css';
 import gulpSequence from 'gulp-sequence';
-import gulpWebServer from 'gulp-webserver';
 import getWebpackConfig from './compile.config';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';

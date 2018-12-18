@@ -51,6 +51,10 @@ export default function getWebpackConfig ({hot=false,filenameSignature=false}) {
       path: path.resolve(__dirname,'build'),
       publicPath:'',
     },
+    externals:{
+     'react':'React',
+     'react-dom':'ReactDOM',
+    },
     mode,
     devtool:'source-map',
     module:{

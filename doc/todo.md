@@ -34,3 +34,10 @@
 ### extra task
 增加reset／normalize css, 重制默认样式
 增加 viewport <meta> ， 适应移动设备
+
+
+warning:
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets:
+  vendor.js (293 KiB)
