@@ -30,3 +30,6 @@
 ### extra task
 增加reset／normalize css, 重制默认样式
 增加 viewport <meta> ， 适应移动设备
+
+
+# MiniCssExtractPlugin 取代 ExtractTextPlugin，支持css HMR

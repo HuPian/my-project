@@ -1,5 +1,5 @@
 import path from 'path'; // node 内部模块
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'extract-text-webpack-plugin'
 import UglifyJsWebpackPlugin from 'uglifyjs-webpack-plugin';
 import  AssetsWebpackPlugin from "assets-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -23,7 +23,7 @@ export default function getWebpackConfig ({hot=false,filenameSignature=false}) {
   }
   const plugins = [
     // 插件：导出 css
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename:`[name]${nameSignature.contenthash}.min.css`
     }),
     // 插件，压缩js
@@ -51,7 +51,7 @@ export default function getWebpackConfig ({hot=false,filenameSignature=false}) {
       path: path.resolve(__dirname,'build'),
       publicPath:'',
     },
-    mode,
+    mode:"development",
     devtool:'source-map',
     module:{
       rules:[
@@ -67,11 +67,11 @@ export default function getWebpackConfig ({hot=false,filenameSignature=false}) {
         },
         {
           test: /\.css/,
-          use: ExtractTextPlugin.extract({fallback: "style-loader", use:["css-loader", "postcss-loader"]})
+          use: [ MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
         },
         {
           test: /\.scss/,
-          use: ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader", "postcss-loader"]}) //从右往左应用
+          use: [ MiniCssExtractPlugin.loader, "css-loader","sass-loader", "postcss-loader"] //从右往左应用
         },
         {
           test: /\.(eot|ttf|woff|woff2|svg)/,
