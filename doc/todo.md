@@ -29,7 +29,9 @@
     try: css-hot-loader & mini-css-extract-plugin: cannot read property call of undefined
     try: gulp webserver : 另起一个单独的view 服务，监听文件夹, doesn't work. webpackDevSever 构建的内容在内存中
     solution: 起server时，不单独导出css文件，直接使用style-loader
+
 10. npm script
+11. mock data： 设置proxy
 
 ### extra task
 增加reset／normalize css, 重制默认样式
